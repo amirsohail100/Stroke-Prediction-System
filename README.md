@@ -6,6 +6,12 @@ Designed to assist in early health analysis, this interface provides an interact
 
 ---
 
+## 🚀 Live Application
+
+You can try the live app here: **[[[Insert Live Link Here](https://stroke-prediction-system-8hju68peixnvhymfavf7ir.streamlit.app/)]]**
+
+---
+
 ## 📸 Application Preview
 
 ![LexiLearn-AI Screenshot](UI.png)
