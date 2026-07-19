@@ -6,6 +6,13 @@ Designed to assist in early health analysis, this interface provides an interact
 
 ---
 
+## 📸 Application Preview
+
+![LexiLearn-AI Screenshot](UI.png)
+_(Tip: Replace 'preview.png' with your image path or GitHub asset link)_
+
+---
+
 ## 🚀 Key Features
 
 - **Gradient Boosting Core:** High-performance predictive intelligence tuned to analyze tabular clinical datasets.
