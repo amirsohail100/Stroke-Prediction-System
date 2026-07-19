@@ -24,11 +24,10 @@ For clean deployment to GitHub and hosting servers (such as Streamlit Community 
 ├── stroke_model.pkl        # Serialized Gradient Boosting Model binary
 ├── scaler.pkl              # MinMax/Standard Scaler config object (if used)
 ├── Final_model.pkl         # Serialized Gradient Boosting Model binary
+├── columns.pkl             # Feature names for Gradient Boosting Model
 ├── requirements.txt        # Production dependency lists for server build
 ├── UI.png                  # App screenshot for Streamlit Community Cloud
 └── README.md               # App technical documentation (this file)
-
-
+```
 
 📊 Built an interactive Stroke Prediction Dashboard using Streamlit! Driven by a Gradient Boosting Classifier with 93% accuracy, the web application evaluates clinical inputs—including health metrics, personal details, and lifestyle factors—to compute stroke risk scores instantly. Fully ready for deployment!🧠💻#MachineLearning #DataScience #Python
-```
