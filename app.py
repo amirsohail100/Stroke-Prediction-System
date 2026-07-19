@@ -45,7 +45,7 @@ st.markdown("**Predict stroke risk based on patient health data using Machine Le
 
 # Load model and preprocessing objects
 try:
-    model = load("Final Model.pkl")
+    model = load("Final_Model.pkl")
     scaler = load("scaler.pkl")
     columns = load("columns.pkl")
 except FileNotFoundError:
