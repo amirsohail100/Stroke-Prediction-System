@@ -37,13 +37,13 @@ Run the following commands in your terminal to clone the repository, install dep
 # Clone the repository
 
 ```bash
-git clone https://github.com/amirsohail100/Bank-Telemarketing-Success-Prediction-using-ANN.git
+git clone https://github.com/amirsohail100/Stroke-Prediction-System.git
 ```
 
 ## Navigate into the project directory
 
 ```bash
-cd Bank-Telemarketing-Success-Prediction-using-ANN
+cd Stroke-Prediction-System
 ```
 
 ## Install required packages
