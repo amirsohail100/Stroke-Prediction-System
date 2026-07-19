@@ -26,7 +26,7 @@ For clean deployment to GitHub and hosting servers (such as Streamlit Community 
 ├── Final_model.pkl         # Serialized Gradient Boosting Model binary
 ├── columns.pkl             # Feature names for Gradient Boosting Model
 ├── requirements.txt        # Production dependency lists for server build
-├── UI.png                  # App screenshot for Streamlit Community Clou
+├── UI.png                  # App screenshot for Streamlit Community Cloud
 └── README.md               # App technical documentation (this file)
 ```
 
