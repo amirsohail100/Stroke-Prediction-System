@@ -30,4 +30,33 @@ For clean deployment to GitHub and hosting servers (such as Streamlit Community 
 └── README.md               # App technical documentation (this file)
 ```
 
+## 💻 Installation & Setup
+
+Run the following commands in your terminal to clone the repository, install dependencies, and run the project locally:
+
+# Clone the repository
+
+```bash
+git clone https://github.com/amirsohail100/Bank-Telemarketing-Success-Prediction-using-ANN.git
+```
+
+## Navigate into the project directory
+
+```bash
+cd Bank-Telemarketing-Success-Prediction-using-ANN
+```
+
+## Install required packages
+
+```bash
+pip install -r requirements.
+```
+
+## Run the Streamlit application
+
+```bash
+streamlit run app.py
+
+
 📊 Built an interactive Stroke Prediction Dashboard using Streamlit! Driven by a Gradient Boosting Classifier with 93% accuracy, the web application evaluates clinical inputs—including health metrics, personal details, and lifestyle factors—to compute stroke risk scores instantly. Fully ready for deployment!🧠💻#MachineLearning #DataScience #Python
+```
