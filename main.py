@@ -5,13 +5,11 @@ from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 
-# Model aur columns load kar rahe hain
 model = load("model_pipeline.pkl")
 COLUMNS = load("columns.pkl")
 
 app = FastAPI(title="Stroke Prediction API")
 
-# CORS Middleware setup
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,21 +17,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Stroke dataset ke real values ke hisaab se Pydantic Model
 class Data(BaseModel):
     gender: Literal['Male', 'Female', 'Other']
-    age: float = Field(..., ge=0.0, le=120.0, description="Age of the patient")
-    hypertension: int = Field(..., ge=0, le=1, description="0 for no, 1 for hypertension")
-    heart_disease: int = Field(..., ge=0, le=1, description="0 for no, 1 for heart disease")
+    age: float = Field(..., ge=0.0, le=120.0)
+    hypertension: int = Field(..., ge=0, le=1)
+    heart_disease: int = Field(..., ge=0, le=1)
     ever_married: Literal['Yes', 'No']
     work_type: Literal['Private', 'Self-employed', 'Govt_job', 'children', 'Never_worked']
     Residence_type: Literal['Urban', 'Rural']
-    avg_glucose_level: float = Field(..., gt=0, description="Average glucose level in blood")
-    bmi: float = Field(..., gt=0, description="Body mass index")
+    avg_glucose_level: float = Field(..., gt=0)
+    bmi: float = Field(..., gt=0)
     smoking_status: Literal['formerly smoked', 'never smoked', 'smokes', 'Unknown']
 
+# Ek behtar aur professional response structure
 class PredictionResponse(BaseModel):
-    predicted: Literal['Yes', 'No']
+    prediction_label: Literal['High Risk', 'Low Risk']
+    stroke_probability: float = Field(..., description="Confidence score of the prediction")
 
 @app.get("/")
 def greet():
@@ -41,7 +40,6 @@ def greet():
 
 @app.post('/predict', response_model=PredictionResponse)
 def predict(data: Data):
-    # Input data ko DataFrame mein convert karna
     input_row = pd.DataFrame([{
         "gender": data.gender,
         "age": data.age,
@@ -55,14 +53,23 @@ def predict(data: Data):
         "smoking_status": data.smoking_status
     }])
     
-    # Model prediction
+    # Class prediction (0 or 1)
     prediction = model.predict(input_row)[0]
     
-    # Numeric prediction ko 'Yes' / 'No' mein convert karna
+    # Probability nikalna (agar model predict_proba support karta hai)
+    try:
+        probabilities = model.predict_proba(input_row)[0]
+        confidence = float(probabilities[1] if prediction == 1 else probabilities[0])
+    except Exception:
+        confidence = 1.0 if prediction == 1 else 0.0  # Fallback agar pipeline mein proba na ho
+
+    # Professional labels
     if prediction == 1:
-        result = "Yes"
+        label = "High Risk"
     else:
-        result = "No"
+        label = "Low Risk"
         
-    # Corrected response return kar rahe hain (fixed the variable mismatch bug)
-    return PredictionResponse(predicted=result)
+    return PredictionResponse(
+        prediction_label=label,
+        stroke_probability=round(confidence, 4)
+    )
