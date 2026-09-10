@@ -14,7 +14,7 @@ You can try the live app here: **[[[Insert Live Link Here](https://stroke-predic
 
 ## 📸 Application Preview
 
-![LexiLearn-AI Screenshot](UI.png)
+![LexiLearn-AI Screenshot](assets\UI.png)
 _(Tip: Replace 'preview.png' with your image path or GitHub asset link)_
 
 ---
